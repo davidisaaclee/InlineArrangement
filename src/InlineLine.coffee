@@ -34,7 +34,7 @@ Polymer
       return @_line
 
   _populateLines: () ->
-    collectLines = (line, child) ->
+    collectLines = (line, child) =>
       switch child.tagName.toLowerCase()
         # when 'inline-tabstop'
         #   line.tabstops++
