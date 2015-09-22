@@ -1,0 +1,17 @@
+link(rel="import", href="../../polymer/polymer.html")
+link(rel="import", href="ChainableElement.html")
+
+dom-module#chainable-element
+  style.
+    :host {
+      box-sizing: border-box;
+    }
+
+    ::content span {
+      white-space: pre;
+    }
+
+  template
+    content
+
+script(src="ChainableElement.js")

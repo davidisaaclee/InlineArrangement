@@ -1,0 +1,221 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, \
+                                   minimum-scale=1.0, \
+                                   initial-scale=1.0, \
+                                   user-scalable=yes")
+    title inline-arrangement demo
+    script(src="../../../webcomponentsjs/webcomponents-lite.js")
+    link(rel="import", href="../../../polymer/polymer.html")
+    link(rel="import", href="../InlinePiece.html")
+    link(rel="import", href="../InlineFragment.html")
+    link(rel="import", href="../InlineBlock.html")
+    link(rel="import", href="../InlineArrangement.html")
+    link(rel="import", href="../InlineNode.html")
+    link(rel="import", href="../InlineLine.html")
+    link(rel="import", href="../ChainableElement.html")
+    link(rel="import", href="../../../lift-dragger/build/lift-dragger.html")
+
+    style.
+
+      inline-piece {
+        //- border: 1px purple solid;
+        padding: 0px 1px;
+      }
+
+      .tab {
+        width: 2em;
+        display: inline-block;
+      }
+  body
+    //- inline-arrangement#big-normal-use
+      inline-block#big-one
+        inline-block
+          inline-fragment(line-height="15px")
+            div.line
+              inline-piece
+                span hey there
+            div.line
+              inline-piece
+                span Here's another line of text
+          inline-fragment(line-height="15px")
+            div.line
+              inline-piece
+                span and another fragment
+
+        inline-fragment
+          div.line
+            inline-piece
+              span onto fragment number 2!
+            inline-piece
+              span.tab
+          div.line
+            inline-piece
+              span.tab
+            inline-piece
+              span short
+
+        inline-block
+          inline-fragment(line-height="15px")
+            div.line
+              inline-piece
+                span here's a nested inline-block1
+            div.line
+              inline-piece
+                span isn't this neat?
+              inline-piece.tab
+
+        inline-block
+          inline-block
+            inline-block
+
+        inline-fragment(line-height="15px")
+          div.line
+            inline-piece
+              span hey there
+            inline-piece
+              span(style="font-size: 30pt") big
+          div.line
+            inline-piece
+              span Here's another line of text
+            //- inline-piece.tab
+
+        inline-fragment
+          div.line
+            inline-piece
+              span onto fragment number 2!
+            inline-piece
+              span.tab
+          div.line
+            inline-piece.tab
+            inline-piece
+              span short2
+
+        inline-block
+
+      //- inline-block
+        inline-fragment(line-height="15px")
+          div.line
+            inline-piece
+              span hey there
+            inline-piece
+              span(style="font-size: 30pt") big
+          div.line
+            inline-piece
+              span Here's another line of text
+            inline-piece.tab
+        inline-fragment
+          div.line
+            inline-piece
+              span onto fragment number 2!
+            inline-piece
+              span.tab
+          div.line
+            inline-piece.tab
+            inline-piece
+              span short
+
+    //- inline-arrangement#code-usage
+      inline-block
+        inline-fragment
+          div.line
+            inline-piece
+              span foo = (bar) -&gt;
+          div.line
+            inline-piece
+              span.tab
+        inline-block
+          inline-fragment
+            div.line
+              inline-piece
+                span bar
+          inline-fragment
+            div.line
+              inline-piece
+                span =
+          inline-fragment
+            div.line
+              inline-piece
+                span bar + 1
+
+    //- inline-arrangement#insert-point
+
+    //- chainable-element
+      chainable-element(style="color: red;")
+        span I can be chained!
+      chainable-element(style="color: green;")
+        span see? I can even
+        span: p &#09; skip lines
+      chainable-element(style="color: blue;")
+        span and continue from there!
+      chainable-element(style="color: purple;")
+        span And while I'm talking,
+        chainable-element(style="color: grey;")
+          span (although, really, I'm typing)
+        span I can have a nested aside.
+
+    //- lift-dragger
+    inline-node(draw=true)
+      inline-line
+        inline-node#node1
+          inline-line
+            inline-piece#pc1
+              span first line
+          inline-line(indent=1)
+            inline-piece#pc2
+              span second line
+            inline-node#node2
+              inline-line
+                inline-piece#pc3
+                  span nested node first line 1
+                inline-piece#pc4
+                  span nested node first line 2
+              inline-line(indent=1)
+                inline-piece#pc5
+                  span nested node second line
+                inline-node#node2
+                  inline-line
+                    inline-piece#pc6
+                      span nested node first line 1
+                    inline-piece#pc7
+                      span nested node first line 2
+                  inline-line
+                    inline-piece#pc8
+                      span nested node second line
+          inline-line
+            inline-piece#pc9
+              span second line
+            inline-node#node2
+              inline-line
+                inline-piece#pc10
+                  span nested node first line 1
+                inline-piece#pc11
+                  span nested node first line 2
+              inline-line(indent=1)
+                inline-piece#pc12
+                  span nested node second line
+                inline-node#node2
+                  inline-line
+                    inline-piece#pc13
+                      span nested node first line 1
+                    inline-piece#pc14
+                      span nested node first line 2
+                  inline-line
+                    inline-piece#pc15
+                      span nested node second line
+          inline-line(indent=-1)
+            inline-node#node3
+              inline-line
+                inline-piece
+                  span return to orignal
+//-
+  first line
+    second line nested node first line 1 nested node first line 2
+      nested node second line nested node first line 1 nested node first line 2
+      nested node second line
+
+  second line nested node first line 1 nested node first line 2
+    nested node second line nested node first line nested node first line 2
+    nested node second line

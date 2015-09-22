@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,                                    minimum-scale=1.0,                                    initial-scale=1.0,                                    user-scalable=yes">
+    <title>inline-arrangement demo</title>
+    <script src="../../../webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="../../../polymer/polymer.html">
+    <link rel="import" href="../InlinePiece.html">
+    <link rel="import" href="../InlineFragment.html">
+    <link rel="import" href="../InlineBlock.html">
+    <link rel="import" href="../InlineArrangement.html">
+    <link rel="import" href="../InlineNode.html">
+    <link rel="import" href="../InlineLine.html">
+    <link rel="import" href="../ChainableElement.html">
+    <link rel="import" href="../../../lift-dragger/build/lift-dragger.html">
+    <style>
+      inline-piece {
+        //- border: 1px purple solid;
+        padding: 0px 1px;
+      }
+      
+      .tab {
+        width: 2em;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <inline-node draw>
+      <inline-line>
+        <inline-node id="node1">
+          <inline-line>
+            <inline-piece id="pc1"><span>first line</span></inline-piece>
+          </inline-line>
+          <inline-line indent="1">
+            <inline-piece id="pc2"><span>second line</span></inline-piece>
+            <inline-node id="node2">
+              <inline-line>
+                <inline-piece id="pc3"><span>nested node first line 1</span></inline-piece>
+                <inline-piece id="pc4"><span>nested node first line 2</span></inline-piece>
+              </inline-line>
+              <inline-line indent="1">
+                <inline-piece id="pc5"><span>nested node second line</span></inline-piece>
+                <inline-node id="node2">
+                  <inline-line>
+                    <inline-piece id="pc6"><span>nested node first line 1</span></inline-piece>
+                    <inline-piece id="pc7"><span>nested node first line 2</span></inline-piece>
+                  </inline-line>
+                  <inline-line>
+                    <inline-piece id="pc8"><span>nested node second line</span></inline-piece>
+                  </inline-line>
+                </inline-node>
+              </inline-line>
+            </inline-node>
+          </inline-line>
+          <inline-line>
+            <inline-piece id="pc9"><span>second line</span></inline-piece>
+            <inline-node id="node2">
+              <inline-line>
+                <inline-piece id="pc10"><span>nested node first line 1</span></inline-piece>
+                <inline-piece id="pc11"><span>nested node first line 2</span></inline-piece>
+              </inline-line>
+              <inline-line indent="1">
+                <inline-piece id="pc12"><span>nested node second line</span></inline-piece>
+                <inline-node id="node2">
+                  <inline-line>
+                    <inline-piece id="pc13"><span>nested node first line 1</span></inline-piece>
+                    <inline-piece id="pc14"><span>nested node first line 2</span></inline-piece>
+                  </inline-line>
+                  <inline-line>
+                    <inline-piece id="pc15"><span>nested node second line</span></inline-piece>
+                  </inline-line>
+                </inline-node>
+              </inline-line>
+            </inline-node>
+          </inline-line>
+          <inline-line indent="-1">
+            <inline-node id="node3">
+              <inline-line>
+                <inline-piece><span>return to orignal</span></inline-piece>
+              </inline-line>
+            </inline-node>
+          </inline-line>
+        </inline-node>
+      </inline-line>
+    </inline-node>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+
+<link rel="import" href="../../polymer/polymer.html"/>
+<dom-module id="inline-block">
+  <style>
+    :host {
+      box-sizing: border-box;
+    }
+    
+    ::content inline-fragment, inline-block {
+      position: absolute;
+    }
+    
+  </style>
+  <template>
+    <content select="inline-fragment, inline-block"></content>
+  </template>
+</dom-module>
+<script src="InlineBlock.js"></script>

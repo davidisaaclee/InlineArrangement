@@ -1,0 +1,29 @@
+
+<link rel="import" href="../../polymer/polymer.html"/>
+<link rel="import" href="InlinePiece.html"/>
+<dom-module id="inline-arrangement">
+  <style>
+    :host {
+      box-sizing: border-box;
+    
+      //- maybe flex would be a good choice here?
+      //- display: flex;
+      //- display: -webkit-flex;
+      //- flex-flow: column nowrap;
+    
+      //- display: block;
+    }
+    
+    ::content inline-block {
+      display: block;
+      position: relative;
+    
+      background-color: green;
+    }
+    
+  </style>
+  <template>
+    <content></content>
+  </template>
+</dom-module>
+<script src="InlineArrangement.js"></script>

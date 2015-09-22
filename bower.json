@@ -1,0 +1,30 @@
+{
+  "name": "inline-arrangement",
+  "version": "1.0.0",
+  "authors": [
+    "David Isaac Lee <david@david-lee.net>"
+  ],
+  "description": "A set of classes for displaying data in an inline, text-like structure.",
+  "keywords": [
+    "web-component",
+    "web-components",
+    "polymer",
+    "seed"
+  ],
+  "main": "InlineArrangement.html",
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "homepage": "https://github.com/davidisaaclee/InlineArrangement/",
+  "ignore": [
+    "/.*",
+    "/test/",
+    "/demo/"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "web-component-tester": "*"
+  },
+  "resolutions": {
+    "polymer": "~1.0.9"
+  }
+}

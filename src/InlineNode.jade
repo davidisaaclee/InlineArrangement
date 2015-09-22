@@ -1,0 +1,49 @@
+link(rel="import", href="../../polymer/polymer.html")
+
+dom-module#inline-node
+  style.
+    :host {
+      box-sizing: border-box;
+      //- display: inline-block;
+      background-color: rgba(100, 100, 100, 0.3);
+    }
+    
+    .hidden {
+      visibility: hidden;
+    }
+
+    .raphael-canvas {
+      position: absolute;
+    }
+
+    #canvas {
+      z-index: -2;
+    }
+
+    #highlight {
+      z-index: -1;
+    }
+
+  template
+    span#canvas.raphael-canvas
+    span#highlight.raphael-canvas
+    content
+
+
+script(src="InlineNode.js")
+//- script.
+//-   Polymer({
+//-     is: 'html-echo',
+//-     properties: {
+//-       element: {
+//-         type: Object,
+//-         observe: '_elementChanged'
+//-       }
+//-     },
+//-     ready: function () {
+//-       this._elementChanged();
+//-     },
+//-     _elementChanged: function () {
+//-       this.innerHTML = this.element.outerHTML;
+//-     }
+//-   })

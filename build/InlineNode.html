@@ -1,0 +1,32 @@
+
+<link rel="import" href="../../polymer/polymer.html"/>
+<dom-module id="inline-node">
+  <style>
+    :host {
+      box-sizing: border-box;
+      //- display: inline-block;
+      background-color: rgba(100, 100, 100, 0.3);
+    }
+    
+    .hidden {
+      visibility: hidden;
+    }
+    
+    .raphael-canvas {
+      position: absolute;
+    }
+    
+    #canvas {
+      z-index: -2;
+    }
+    
+    #highlight {
+      z-index: -1;
+    }
+    
+  </style>
+  <template><span id="canvas" class="raphael-canvas"></span><span id="highlight" class="raphael-canvas"></span>
+    <content></content>
+  </template>
+</dom-module>
+<script src="InlineNode.js"></script>

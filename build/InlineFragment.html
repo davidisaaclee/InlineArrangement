@@ -1,0 +1,21 @@
+
+<link rel="import" href="../../polymer/polymer.html"/>
+<link rel="import" href="InlinePiece.html"/>
+<dom-module id="inline-fragment">
+  <style>
+    :host {
+      box-sizing: border-box;
+      display: inline-block;
+    }
+    
+    .line, ::content .line {
+      display: flex;
+    }
+    
+    
+  </style>
+  <template>
+    <content select=".line"></content>
+  </template>
+</dom-module>
+<script src="InlineFragment.js"></script>
