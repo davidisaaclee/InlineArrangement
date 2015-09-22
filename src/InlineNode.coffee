@@ -54,6 +54,9 @@ Polymer
       @fireReady()
 
   updateChildren: () ->
+    @childrenReady () ->
+      console.log 'children ready!'
+
     @_populateLines()
 
     if @draw
