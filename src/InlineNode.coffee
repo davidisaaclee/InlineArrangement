@@ -201,7 +201,7 @@ Polymer
           "0px",
           pc.piece
         bcr = pc.piece.getBoundingClientRect()
-        console.log 'HEIGHT', bcr.height, pc.piece.offsetHeight
+        console.log 'HEIGHT', bcr.height, pc.piece.offsetHeight, pc.piece
         offset.x += bcr.width
         lineHeight = Math.max lineHeight, bcr.height
         # offset.x += pc.piece.offsetWidth
