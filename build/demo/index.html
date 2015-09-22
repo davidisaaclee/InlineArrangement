@@ -23,7 +23,63 @@
     </style>
   </head>
   <body>
-    <inline-node id="root" draw></inline-node>
+    <inline-node draw>
+      <inline-line>
+        <inline-node id="node1">
+          <inline-line>
+            <inline-piece id="pc1"><span>first line</span></inline-piece>
+          </inline-line>
+          <inline-line indent="1">
+            <inline-piece id="pc2"><span>second line</span></inline-piece>
+            <inline-node id="node2">
+              <inline-line>
+                <inline-piece id="pc3"><span>nested node first line 1</span></inline-piece>
+                <inline-piece id="pc4"><span>nested node first line 2</span></inline-piece>
+              </inline-line>
+              <inline-line indent="1">
+                <inline-piece id="pc5"><span>nested node second line</span></inline-piece>
+                <inline-node id="node2">
+                  <inline-line>
+                    <inline-piece id="pc6"><span>nested node first line 1</span></inline-piece>
+                    <inline-piece id="pc7"><span>nested node first line 2</span></inline-piece>
+                  </inline-line>
+                  <inline-line>
+                    <inline-piece id="pc8"><span>nested node second line</span></inline-piece>
+                  </inline-line>
+                </inline-node>
+              </inline-line>
+            </inline-node>
+          </inline-line>
+          <inline-line>
+            <inline-piece id="pc9"><span>second line</span></inline-piece>
+            <inline-node id="node2">
+              <inline-line>
+                <inline-piece id="pc10"><span>nested node first line 1</span></inline-piece>
+                <inline-piece id="pc11"><span>nested node first line 2</span></inline-piece>
+              </inline-line>
+              <inline-line indent="1">
+                <inline-piece id="pc12"><span>nested node second line</span></inline-piece>
+                <inline-node id="node2">
+                  <inline-line>
+                    <inline-piece id="pc13"><span>nested node first line 1</span></inline-piece>
+                    <inline-piece id="pc14"><span>nested node first line 2</span></inline-piece>
+                  </inline-line>
+                  <inline-line>
+                    <inline-piece id="pc15"><span>nested node second line</span></inline-piece>
+                  </inline-line>
+                </inline-node>
+              </inline-line>
+            </inline-node>
+          </inline-line>
+          <inline-line indent="-1">
+            <inline-node id="node3">
+              <inline-line>
+                <inline-piece><span>return to orignal</span></inline-piece>
+              </inline-line>
+            </inline-node>
+          </inline-line>
+        </inline-node>
+      </inline-line>
+    </inline-node>
   </body>
 </html>
-<script src="InlineArrangementDemo.js"></script>
