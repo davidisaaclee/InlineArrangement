@@ -93,4 +93,4 @@ startLine = document.createElement 'inline-line'
 Polymer.dom(root).appendChild startLine
 transformModel modelObject, root, startLine
 
-setTimeout (() -> root.update()), 1000
+setTimeout (() -> root.updateChildren()), 1000

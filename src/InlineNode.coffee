@@ -53,7 +53,7 @@ Polymer
 
       @fireReady()
 
-  update: () ->
+  updateChildren: () ->
     @_populateLines()
 
     if @draw
