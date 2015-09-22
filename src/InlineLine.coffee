@@ -51,7 +51,7 @@ Polymer
             node: child
           return line
         else
-          console.error 'No case for ', child
+          throw new Error 'No case for ' + child.tagName()
 
     indentLevel = @indent
     @_line = @getContentChildren()
