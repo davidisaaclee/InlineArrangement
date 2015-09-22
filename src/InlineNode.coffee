@@ -43,11 +43,10 @@ Polymer
     @_backgroundPaper = Raphael @$.canvas, 1000, 1000
     # @_backgroundPaper.canvas.style['z-index'] = -1
 
-    @childrenReady () =>
+    @async () =>
       @_populateLines()
 
       if @draw
-        console.log 'children ready; drawing...'
         @_arrangeLines()
 
         @drawBackground()
