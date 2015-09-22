@@ -7,6 +7,9 @@ Polymer
     indent:
       type: Number
       value: 0
+    childrenSelector:
+      type: String
+      value: 'inline-node, inline-piece'
 
   created: () ->
     WaitForChildren this
@@ -23,7 +26,12 @@ Polymer
     pieces: Array<inline-piece | Context>
     tabstops: Number
   ###
-  getLine: () -> @_line
+  getLine: () ->
+    if @_line?
+    then @_line
+    else
+      @_populateLines()
+      return @_line
 
   _populateLines: () ->
     collectLines = (line, child) ->
