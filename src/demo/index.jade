@@ -10,12 +10,8 @@ html(lang='en')
     script(src="../../../webcomponentsjs/webcomponents-lite.js")
     link(rel="import", href="../../../polymer/polymer.html")
     link(rel="import", href="../InlinePiece.html")
-    link(rel="import", href="../InlineFragment.html")
-    link(rel="import", href="../InlineBlock.html")
-    link(rel="import", href="../InlineArrangement.html")
     link(rel="import", href="../InlineNode.html")
     link(rel="import", href="../InlineLine.html")
-    link(rel="import", href="../ChainableElement.html")
     link(rel="import", href="../../../lift-dragger/build/lift-dragger.html")
 
     style.
@@ -30,134 +26,10 @@ html(lang='en')
         display: inline-block;
       }
   body
-    //- inline-arrangement#big-normal-use
-      inline-block#big-one
-        inline-block
-          inline-fragment(line-height="15px")
-            div.line
-              inline-piece
-                span hey there
-            div.line
-              inline-piece
-                span Here's another line of text
-          inline-fragment(line-height="15px")
-            div.line
-              inline-piece
-                span and another fragment
-
-        inline-fragment
-          div.line
-            inline-piece
-              span onto fragment number 2!
-            inline-piece
-              span.tab
-          div.line
-            inline-piece
-              span.tab
-            inline-piece
-              span short
-
-        inline-block
-          inline-fragment(line-height="15px")
-            div.line
-              inline-piece
-                span here's a nested inline-block1
-            div.line
-              inline-piece
-                span isn't this neat?
-              inline-piece.tab
-
-        inline-block
-          inline-block
-            inline-block
-
-        inline-fragment(line-height="15px")
-          div.line
-            inline-piece
-              span hey there
-            inline-piece
-              span(style="font-size: 30pt") big
-          div.line
-            inline-piece
-              span Here's another line of text
-            //- inline-piece.tab
-
-        inline-fragment
-          div.line
-            inline-piece
-              span onto fragment number 2!
-            inline-piece
-              span.tab
-          div.line
-            inline-piece.tab
-            inline-piece
-              span short2
-
-        inline-block
-
-      //- inline-block
-        inline-fragment(line-height="15px")
-          div.line
-            inline-piece
-              span hey there
-            inline-piece
-              span(style="font-size: 30pt") big
-          div.line
-            inline-piece
-              span Here's another line of text
-            inline-piece.tab
-        inline-fragment
-          div.line
-            inline-piece
-              span onto fragment number 2!
-            inline-piece
-              span.tab
-          div.line
-            inline-piece.tab
-            inline-piece
-              span short
-
-    //- inline-arrangement#code-usage
-      inline-block
-        inline-fragment
-          div.line
-            inline-piece
-              span foo = (bar) -&gt;
-          div.line
-            inline-piece
-              span.tab
-        inline-block
-          inline-fragment
-            div.line
-              inline-piece
-                span bar
-          inline-fragment
-            div.line
-              inline-piece
-                span =
-          inline-fragment
-            div.line
-              inline-piece
-                span bar + 1
-
-    //- inline-arrangement#insert-point
-
-    //- chainable-element
-      chainable-element(style="color: red;")
-        span I can be chained!
-      chainable-element(style="color: green;")
-        span see? I can even
-        span: p &#09; skip lines
-      chainable-element(style="color: blue;")
-        span and continue from there!
-      chainable-element(style="color: purple;")
-        span And while I'm talking,
-        chainable-element(style="color: grey;")
-          span (although, really, I'm typing)
-        span I can have a nested aside.
+    inline-node#root(draw=true)
 
     //- lift-dragger
-    inline-node(draw=true)
+    //- inline-node(draw=true)
       inline-line
         inline-node#node1
           inline-line
@@ -219,3 +91,5 @@ html(lang='en')
   second line nested node first line 1 nested node first line 2
     nested node second line nested node first line nested node first line 2
     nested node second line
+
+script(src='InlineArrangementDemo.js')

@@ -9,62 +9,87 @@ modelObject =
         text: 'function foo ('
        ,
         type: 'hole'
-        expression: null
-          # type: 'expression'
-          # instances: []
+        expression:
+          type: 'expression'
+          instances: [
+            type: 'instance'
+            children: [
+              type: 'literal'
+              text: "I'm inside here! \nand have multiple lines"
+            ]
+          ]
        ,
         type: 'literal'
         text: ') {\n\t'
        ,
         type: 'hole'
-        expression: null
+        expression:
+          type: 'expression'
+          instances: [
+            type: 'instance'
+            children: [
+              type: 'literal'
+              text: "I'm inside here! \n\tand have multiple lines"
+            ]
+          ]
        ,
         type: 'literal'
-        text: ' \n}'
+        text: '\n}'
       ]
     ]
 
 
 
-arrangement = document.querySelector '#insert-point'
+root = document.querySelector '#root'
 
-transformModel = (model, outerBlock) ->
+transformModel = (model, context, currentLine) ->
   switch model.type
     when 'expression'
-      elt = document.createElement 'inline-block'
+      ln = currentLine
+      model.instances.forEach (inst) ->
+        {ln} = transformModel inst, context, ln
 
-      model.instances.forEach (instance) ->
-        transformModel instance, elt
+      return {ctx: context, ln: currentLine}
 
-      Polymer.dom(outerBlock).appendChild elt
     when 'instance'
-      elt = document.createElement 'inline-block'
+      ctx = document.createElement 'inline-node'
+      firstLine = document.createElement 'inline-line'
+      Polymer.dom(ctx).appendChild firstLine
 
-      if model.children.length > 0
-        model.children.forEach (child) ->
-          transformModel child, elt
+      Polymer.dom(currentLine).appendChild ctx
+      ln = firstLine
+      model.children.forEach (child) ->
+        {ln, ctx} = transformModel child, ctx, ln
 
-      Polymer.dom(outerBlock).appendChild elt
+      return {ctx: context, ln: currentLine}
+
     when 'hole'
       if model.expression?
-        transformModel model.expression, outerBlock
-        return outerBlock
+      then return transformModel model.expression, context, currentLine
+      else return {ctx: context, ln: currentLine}
+
     when 'literal'
-      fragment = document.createElement 'inline-fragment'
+      lineElm = currentLine
+      (model.text.split '\n').forEach (line, idx) ->
+        if idx isnt 0
+          lineElm = document.createElement 'inline-line'
+          Polymer.dom(context).appendChild lineElm
 
-      for ln in model.text.split '\n'
-        lineDiv = document.createElement 'div'
-        lineDiv.classList.add 'line'
-        piece = document.createElement 'inline-piece'
-        textSpan = document.createElement 'span'
-        textSpan.innerText = ln
-        Polymer.dom(piece).appendChild textSpan
-        Polymer.dom(lineDiv).appendChild piece
-        Polymer.dom(fragment).appendChild lineDiv
+        if (line.charAt 0) is '\t'
+          lineElm.indent++
 
-      Polymer.dom(outerBlock).appendChild fragment
+        pc = document.createElement 'inline-piece'
+        text = document.createElement 'span'
+        text.innerText = line
 
-block = document.createElement 'inline-block'
-transformModel modelObject, block
-Polymer.dom(arrangement).appendChild block
-arrangement.update()
+        Polymer.dom(pc).appendChild text
+        Polymer.dom(lineElm).appendChild pc
+
+      return {ctx: context, ln: lineElm}
+
+
+startLine = document.createElement 'inline-line'
+Polymer.dom(root).appendChild startLine
+transformModel modelObject, root, startLine
+
+setTimeout (() -> root.update()), 1000

@@ -50,6 +50,15 @@ Polymer
 
       @fireReady()
 
+  update: () ->
+    @_populateLines()
+
+    if @draw
+      @_arrangeLines()
+      @drawBackground()
+
+    @fireReady()
+
   getLines: () ->
     if not @_contextLines?
       @_populateLines()
@@ -101,18 +110,12 @@ Polymer
           pieces.reduce ((rect, pc) ->
             bcr = pc.piece.getBoundingClientRect()
 
-            console.log "#{lineNumber}:#{arguments[2]}", bcr.height, rect.height
-            # console.log "#{lineNumber}:#{arguments[2]}", rect.height
+            # console.log "#{lineNumber}:#{arguments[2]}", bcr.height, rect.height
 
-            r =
-              top: rect.top
-              left: rect.left
-              width: rect.width + bcr.width
-              height: Math.max rect.height, bcr.height
-            console.log r
-            r), beginRect
-            # width: rect.width + pc.piece.offsetWidth
-            # height: Math.max rect.height, pc.piece.offsetHeight), beginRect
+            top: rect.top
+            left: rect.left
+            width: rect.width + bcr.width
+            height: Math.max rect.height, bcr.height), beginRect
       .filter (x) -> x?
 
   drawBackground: () ->

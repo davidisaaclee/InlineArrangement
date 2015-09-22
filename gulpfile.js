@@ -47,40 +47,33 @@ options['jade'] = {
 
 gulp.task('default', ['coffee', 'demo_script', 'jade', 'sass', 'watch']);
 gulp.task('coffee', function (done) {
-   // we define our input files, which we want to have
-   // bundled:
-   var files = [
-       'InlineArrangement.coffee',
-       'InlineFragment.coffee',
-       'InlineBlock.coffee',
-       'InlinePiece.coffee',
-
-       'InlineNode.coffee',
-       'InlineLine.coffee',
-
-       'ChainableElement.coffee'
-   ];
-   // map them to our stream function
-   var tasks = files.map(function(entry) {
-       return browserify(_.extend(options.coffee.options, {
-          entries: [entry],
-          transform: [coffeeify] }))
-           .bundle()
-           .on('error', notify.onError({
-              title: "CoffeeScript error",
-              message: '<%= error.message %>',
-              sound: "Frog", // case sensitive
-              icon: false
-            }))
-           .pipe(source(entry))
-           .pipe(rename({
-              extname: '.js'
+  // we define our input files, which we want to have
+  // bundled:
+  var files = [
+    'InlinePiece.coffee',
+    'InlineNode.coffee',
+    'InlineLine.coffee'
+  ];
+  // map them to our stream function
+  var tasks = files.map(function(entry) {
+      return browserify(_.extend(options.coffee.options, {
+         entries: [entry],
+         transform: [coffeeify] }))
+          .bundle()
+          .on('error', notify.onError({
+             title: "CoffeeScript error",
+             message: '<%= error.message %>',
+             sound: "Frog", // case sensitive
+             icon: false
            }))
-           .pipe(gulp.dest('./build'));
-       });
-   // create a merged stream
-   return es.merge.apply(null, tasks);
-
+          .pipe(source(entry))
+          .pipe(rename({
+             extname: '.js'
+          }))
+          .pipe(gulp.dest('./build'));
+      });
+  // create a merged stream
+  return es.merge.apply(null, tasks);
 });
 
 gulp.task('demo_script', function () {
