@@ -55,8 +55,8 @@ transformModel = (model, context, currentLine) ->
       ctx = document.createElement 'inline-node'
       firstLine = document.createElement 'inline-line'
       Polymer.dom(ctx).appendChild firstLine
-
       Polymer.dom(currentLine).appendChild ctx
+      
       ln = firstLine
       model.children.forEach (child) ->
         {ln, ctx} = transformModel child, ctx, ln
@@ -73,6 +73,7 @@ transformModel = (model, context, currentLine) ->
       (model.text.split '\n').forEach (line, idx) ->
         if idx isnt 0
           lineElm = document.createElement 'inline-line'
+          # lineElm.childrenSelector = 'inline-node:nth-child(even), inline-piece:nth-child(even)'
           Polymer.dom(context).appendChild lineElm
 
         if (line.charAt 0) is '\t'

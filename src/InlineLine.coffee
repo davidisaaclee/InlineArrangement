@@ -7,6 +7,9 @@ Polymer
     indent:
       type: Number
       value: 0
+    childrenSelector:
+      type: String
+      value: 'inline-node, inline-piece'
 
   created: () ->
     WaitForChildren this

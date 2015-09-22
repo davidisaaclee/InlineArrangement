@@ -29,6 +29,9 @@ Polymer
     draw:
       type: Boolean
       value: false
+    childrenSelector:
+      type: String
+      value: 'inline-line'
 
   created: () ->
     WaitForChildren this
