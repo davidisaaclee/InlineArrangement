@@ -47,6 +47,7 @@ Polymer
       @_populateLines()
 
       if @draw
+        console.log 'children ready; drawing...'
         @_arrangeLines()
 
         @drawBackground()
@@ -54,9 +55,6 @@ Polymer
       @fireReady()
 
   updateChildren: () ->
-    @childrenReady () ->
-      console.log 'children ready!'
-
     @_populateLines()
 
     if @draw
